@@ -1,8 +1,8 @@
 
 (async function() {
     const product = await getProduct()
-    displayProduct(product);
-    console.log(product)
+    displayProduct(product) 
+    displayLenses(product)   
 })()
 
 function getProduct() {
@@ -14,7 +14,7 @@ function getProduct() {
          return httpBodyResponse.json()
      })
      .then(function(product) {
-        return product
+        return product        
      })
      .catch(function(error) {
          alert(error)
@@ -27,5 +27,19 @@ function getProduct() {
     document.getElementById("product__description").textContent = product.description
     document.getElementById("product__image").innerHTML = "<img src= " + product.imageUrl + ">" 
 }
+
+function displayLenses(product) {
+    const lensesList = (product.lenses)
+    console.log(lensesList)
+    const lensesElt = document.getElementById('product__lenses')       
+    for (lens of lensesList) {        
+        const lenseElt = document.getElementById('lense__value')
+        lenseElt.textContent = lens
+        lensesElt.appendChild(lenseElt)      
+    }      
+}
+
+
+
 
 
