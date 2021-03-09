@@ -31,11 +31,15 @@ function getProduct() {
 function displayLenses(product) {
     const lensesList = (product.lenses)
     console.log(lensesList)
-    const lensesElt = document.getElementById('product__lenses')       
+    let lensesElt = document.getElementById('product__lenses')       
     for (lens of lensesList) {        
-        const lenseElt = document.getElementById('lense__value')
-        lenseElt.textContent = lens
-        lensesElt.appendChild(lenseElt)      
+        let lenseElt = document.getElementById('lense__value')
+        let option = document.createElement("option")
+        option.innerText = lens
+        option.value = lens
+        console.log(lens)        
+        console.log(option)
+        lensesElt.appendChild(option)  
     }      
 }
 
