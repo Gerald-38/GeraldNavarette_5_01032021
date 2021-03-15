@@ -4,19 +4,53 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/style.css">
-    <!-- <script src="./js/index.js" defer></script> -->
+    <script src="./js/cart.js" defer></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon panier</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">VINTAGE CAMS STORE</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link" href="cart.html">Panier</a>
+            </div>
+          </div>
+        </div>
+    </nav>
     <h1 class="title">Mon panier</h1>
     <div class="container">
         <main class="main" id="main">
             <div class="cart__return">
+                <div id="added__products"></div>
+                <br>
                 <p><a href="index.html">Continuer mes achats</a></p>
+                <br>
+                <button class="btn btn-primary" id="empty__cart">Vider le panier</button>
             </div>
         </main>
+        <form>
+          <p>VEUILLEZ REMPLIR LE FORMULAIRE POUR VALIDER VOTRE COMMANDE</P>
+          <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="exampleInputName">            
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputFirstName" class="form-label">Prénom</label>
+            <input type="text" class="form-control" id="exampleInputFirstName">            
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">            
+          </div>
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

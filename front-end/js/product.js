@@ -26,22 +26,34 @@ function getProduct() {
     document.getElementById("product__price").textContent = product.price + " €"
     document.getElementById("product__description").textContent = product.description
     document.getElementById("product__image").innerHTML = "<img src= " + product.imageUrl + ">" 
+
+    let productObject = {
+         id: product._id,
+         name: product.name,
+         price: product.price
+    }
+
+    const addButton = document.getElementById('basket__add__btn')
+    addButton.onclick = function(){
+        window.location='cart.html'
+        let productObject_json = JSON.stringify(productObject)
+        localStorage.setItem(product._id, productObject_json)     
+    }
 }
+
 
 function displayLenses(product) {
     const lensesList = (product.lenses)
-    console.log(lensesList)
     let lensesElt = document.getElementById('product__lenses')       
     for (lens of lensesList) {        
         let lenseElt = document.getElementById('lense__value')
         let option = document.createElement("option")
         option.innerText = lens
         option.value = lens
-        console.log(lens)        
-        console.log(option)
         lensesElt.appendChild(option)  
-    }      
+    }    
 }
+
 
 
 

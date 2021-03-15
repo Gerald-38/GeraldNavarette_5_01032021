@@ -3,7 +3,6 @@
     for (product of products) {
         displayProduct(product)
     }
-    console.log(products)
 })()
 
 function getProducts() {
@@ -26,9 +25,8 @@ function displayProduct(product) {
     cloneElt.getElementById("product__name").textContent = product.name
     cloneElt.getElementById("product__price").textContent = product.price + " €"
     cloneElt.getElementById("product__description").textContent = product.description
-    cloneElt.getElementById("product__link").innerHTML = "<a href=" + 'product.html' + '?' + 'id=' + product._id + ">" + 'Produit' + "</a>"
-    // cloneElt.getElementById("product__link").onclick = function(){window.location='product.html' + '?' + 'id' + '=' + product._id}
-    
-    document.getElementById('main').appendChild(cloneElt)
+    cloneElt.getElementById("product__link").innerHTML = "<a href=" + 'product.html' + '?' + 'id=' + product._id + ">" + 'Produit' + "</a>"  
+    document.getElementById('main').appendChild(cloneElt)       
 }
+
 
