@@ -30,7 +30,8 @@ function getProduct() {
     let productObject = {
          id: product._id,
          name: product.name,
-         price: product.price
+         price: product.price,
+         quantity: 1
     }
 
     const addButton = document.getElementById('basket__add__btn')

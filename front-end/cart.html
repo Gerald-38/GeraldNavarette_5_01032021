@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/style.css">
     <script src="./js/cart.js" defer></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,9 +25,13 @@
           </div>
         </div>
     </nav>
-    <h1 class="title">Mon panier</h1>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">MON PANIER</h1>
+         </div>
+    </section>
     <div class="container">
-        <main class="main" id="main">
+        <!-- <main class="main" id="main">
             <div class="cart__return">
                 <div id="added__products"></div>
                 <br>
@@ -34,7 +39,91 @@
                 <br>
                 <button class="btn btn-primary" id="empty__cart">Vider le panier</button>
             </div>
-        </main>
+        </main> -->
+
+        <div class="container mb-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive" id="product__cart">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <!-- <th scope="col"> </th> -->
+                                    <th scope="col">Produit</th>
+                                    <th scope="col">Disponibilité</th>
+                                    <th scope="col" class="text-center">Quantité</th>
+                                    <th scope="col" class="text-center"></th>
+                                    <th scope="col" class="text-center"></th>
+                                    <th scope="col" class="text-right">Prix</th>
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody id="added__products">
+                                <!-- <tr>
+                                    <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+                                    <td>Product Name Dada</td>
+                                    <td>En stock</td>
+                                    <td><input class="form-control" type="text" value="1" /></td>
+                                    <td class="text-right">124,90 €</td>
+                                    <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                                </tr> -->
+                            </tbody>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Sous-total</td>
+                                    <td class="text-right" id="sub__total">255,90 €</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Frais d'expédition</td>
+                                    <td class="text-right">6,90 €</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><strong>Total</strong></td>
+                                    <td class="text-right"><strong id="total__price">346,90 €</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col mb-2">
+                    <div class="row">
+                        <div class="col-sm-12  col-md-6">
+                            <button class="btn btn-block btn-light" id="back__button">Continuer vos achats</button>
+                        </div>
+                        <div class="col-sm-12 col-md-6 text-right">
+                            <button class="btn btn-lg btn-block btn-success text-uppercase" id="empty__cart">Vider le panier</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+
+
+
+
+
+
+
+
         <form>
           <p>VEUILLEZ REMPLIR LE FORMULAIRE POUR VALIDER VOTRE COMMANDE</P>
           <div class="mb-3">
@@ -53,9 +142,27 @@
         </form>
     </div>
 
+
+<!-- Bootstrap example  -->
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap example -->
+
+
+
+
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 </body>
 </html>
+
