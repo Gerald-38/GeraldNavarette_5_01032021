@@ -23,7 +23,7 @@ function displayProduct(product) {
     const cloneElt = document.importNode(templateElt.content, true)
 
     cloneElt.getElementById("product__name").textContent = product.name
-    cloneElt.getElementById("product__price").textContent = product.price + " €"
+    cloneElt.getElementById("product__price").textContent = (product.price/1000).toFixed(2) + " €"
     cloneElt.getElementById("product__description").textContent = product.description
     cloneElt.getElementById("product__link").innerHTML = "<a href=" + 'product.html' + '?' + 'id=' + product._id + ">" + 'Produit' + "</a>"  
     document.getElementById('main').appendChild(cloneElt)       

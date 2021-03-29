@@ -23,7 +23,7 @@ function getProduct() {
 
  function displayProduct(product) {
     document.getElementById("product__name").textContent = product.name
-    document.getElementById("product__price").textContent = product.price + " €"
+    document.getElementById("product__price").textContent = (product.price/1000).toFixed(2) + " €"
     document.getElementById("product__description").textContent = product.description
     document.getElementById("product__image").innerHTML = "<img src= " + product.imageUrl + ">" 
 
@@ -34,20 +34,31 @@ function getProduct() {
          quantity: 1
     }
 
-    const addButton = document.getElementById('basket__add__btn')
-    addButton.onclick = function(){
+    let productArray=JSON.parse(localStorage.getItem('productCart'))
+
+    const addToCart = () => {
+        productArray.push(productObject)
+        localStorage.setItem('productCart', JSON.stringify(productArray))
+    }
+
+    const addButton = document.getElementById('basket__add__btn')    
+    addButton.onclick = function(){        
+        if (productArray) {
+            addToCart()
+        }
+        else {
+            productArray = []
+            addToCart()
+            console.log(productArray)
+        }
         window.location='cart.html'
-        let productObject_json = JSON.stringify(productObject)
-        localStorage.setItem(product._id, productObject_json)     
     }
 }
-
 
 function displayLenses(product) {
     const lensesList = (product.lenses)
     let lensesElt = document.getElementById('product__lenses')       
-    for (lens of lensesList) {        
-        let lenseElt = document.getElementById('lense__value')
+    for (lens of lensesList) {    
         let option = document.createElement("option")
         option.innerText = lens
         option.value = lens
