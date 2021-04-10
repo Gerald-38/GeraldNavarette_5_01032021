@@ -6,6 +6,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/style.css">
     <script src="./js/cart.js" defer></script>
+    <script src="./js/form.js" defer></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon panier</title>
@@ -31,16 +32,6 @@
          </div>
     </section>
     <div class="container">
-        <!-- <main class="main" id="main">
-            <div class="cart__return">
-                <div id="added__products"></div>
-                <br>
-                <p><a href="index.html">Continuer mes achats</a></p>
-                <br>
-                <button class="btn btn-primary" id="empty__cart">Vider le panier</button>
-            </div>
-        </main> -->
-
         <div class="container mb-4">
             <div class="row">
                 <div class="col-12">
@@ -48,7 +39,6 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <!-- <th scope="col"> </th> -->
                                     <th scope="col">Produit</th>
                                     <th scope="col">Disponibilité</th>
                                     <th scope="col" class="text-center">Quantité</th>
@@ -59,14 +49,6 @@
                                 </tr>
                             </thead>
                             <tbody id="added__products">
-                                <!-- <tr>
-                                    <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                                    <td>Product Name Dada</td>
-                                    <td>En stock</td>
-                                    <td><input class="form-control" type="text" value="1" /></td>
-                                    <td class="text-right">124,90 €</td>
-                                    <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                                </tr> -->
                             </tbody>
                             <tbody>
                                 <tr>
@@ -112,52 +94,47 @@
                 </div>
             </div>
         </div>
-        
 
-
-
-
-
-
-
-
-
-
-
-        <form>
-          <p>VEUILLEZ REMPLIR LE FORMULAIRE POUR VALIDER VOTRE COMMANDE</P>
+        <p>VEUILLEZ REMPLIR LE FORMULAIRE POUR VALIDER VOTRE COMMANDE</P>
+        <form method="post">
           <div class="mb-3">
-            <label for="exampleInputName" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="exampleInputName">            
+            <label for="inputName" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="inputName" maxlength='30' required>
+            <span id='missName'></span>            
           </div>
           <div class="mb-3">
-            <label for="exampleInputFirstName" class="form-label">Prénom</label>
-            <input type="text" class="form-control" id="exampleInputFirstName">            
+            <label for="inputFirstName" class="form-label">Prénom</label>
+            <input type="text" class="form-control" id="inputFirstName" maxlength='30' required>
+            <span id='missFirstName'></span>                        
+          </div>
+          <div class="mb-3">
+            <label for="inputAdress" class="form-label">Adresse</label>
+            <input type="textarea" class="form-control" id="inputAdress" required>
+            <span id='missAdress'></span>            
+          </div>
+          <div class="mb-3">
+            <label for="inputPostalCode" class="form-label">Code Postal</label>
+            <input type="text" class="form-control" id="inputPostalCode" maxlength='5' required>
+            <span id='missPostalCode'></span>            
+          </div>
+          <div class="mb-3">
+            <label for="inputTown" class="form-label">Ville</label>
+            <input type="text" class="form-control" id="inputTown" maxlength='30' required>
+            <span id='missTown'></span>            
+          </div>
+          <div class="mb-3">
+            <label for="inputPhoneNumber" class="form-label">Tel</label>
+            <input type="tel" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" class="form-control" id="inputPhoneNumber" maxlength='10' required>
+            <span id='missPhoneNumber'></span>            
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">            
+            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" maxlength='100' required>
+            <span id='missEmail'></span>            
           </div>
-          <button type="submit" class="btn btn-primary">Envoyer</button>
+          <button type="submit" class="btn btn-primary" id="order__submit__btn">Valider votre commande</button>
         </form>
     </div>
-
-
-<!-- Bootstrap example  -->
-
-
-
-
-
-
-
-
-
-<!-- Bootstrap example -->
-
-
-
-
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

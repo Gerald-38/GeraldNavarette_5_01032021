@@ -43,3 +43,11 @@
     width: 50px;
 
   }
+
+  input:invalid {
+    color: red;
+  }
+  
+  input:valid {
+    color: black;
+  }

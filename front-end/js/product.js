@@ -35,23 +35,46 @@ function getProduct() {
     }
 
     let productArray=JSON.parse(localStorage.getItem('productCart'))
+    
+
+    let idArray=[]
+
+
+    if (productArray !== null )  {
+        productArray.forEach(product => {
+            idArray.push(product.id)            
+        });
+        }
+
 
     const addToCart = () => {
         productArray.push(productObject)
         localStorage.setItem('productCart', JSON.stringify(productArray))
+        window.location='cart.html'
     }
 
     const addButton = document.getElementById('basket__add__btn')    
-    addButton.onclick = function(){        
-        if (productArray) {
-            addToCart()
+    addButton.onclick = function(e){    
+        e.preventDefault()    
+        if (productArray !== null) {
+            if (idArray.some(x => x === productObject.id)) {
+               // alert('Vous avez déjà sélectionné le modèle ' + productObject.name + ' , rendez vous sur votre panier pour en augmenter le nombre à commander')
+                productObject.quantity+=1
+                let indexOfProduct = productArray.findIndex(i => i.id === productObject.id);
+                productArray.splice(indexOfProduct, 1, productObject)
+                console.log(productArray)
+                localStorage.setItem('productCart', JSON.stringify(productArray))
+                //location.reload()
+                //window.location='cart.html'                
+            }
+            else {
+                addToCart()
+            } 
         }
         else {
             productArray = []
             addToCart()
-            console.log(productArray)
-        }
-        window.location='cart.html'
+        }        
     }
 }
 

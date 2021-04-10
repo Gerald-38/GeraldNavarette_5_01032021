@@ -41,43 +41,49 @@ const updateCart = () => {
 }
 
 function removeProduct() {
-    productArray.forEach (addedProduct => {
-        const productTrash=document.getElementById(addedProduct.id)
-            productTrash.onclick = function() {
-                let indexOfProduct = productArray.findIndex(i => i.id === addedProduct.id);
-                productArray.splice(indexOfProduct, 1)
-                console.log(productArray)
-                updateCart()                              
-            }
-    })
+    if(productArray) {
+        productArray.forEach (addedProduct => {
+            const productTrash=document.getElementById(addedProduct.id)
+                productTrash.onclick = function() {
+                    let indexOfProduct = productArray.findIndex(i => i.id === addedProduct.id);
+                    productArray.splice(indexOfProduct, 1)
+                    console.log(productArray)
+                    updateCart()                              
+                }
+        })
+    }
 }
 
 function increaseProduct() {
-    productArray.forEach (addedProduct => {
-        const productInc=document.getElementById('inc_'+addedProduct.id)
-            productInc.onclick = function() {
-                addedProduct.quantity +=1
-                updateCart()          
-            }
-    })
+    if(productArray) {
+        productArray.forEach (addedProduct => {
+            const productInc=document.getElementById('inc_'+addedProduct.id)
+                productInc.onclick = function() {
+                    addedProduct.quantity +=1
+                    updateCart()          
+                }
+        })
+    }
 }
 
-function decreaseProduct() {    
-    productArray.forEach (addedProduct => {
-        if (addedProduct.quantity > 0) {
-            const productDec=document.getElementById('dec_'+addedProduct.id)        
-            productDec.onclick = function() {
-                addedProduct.quantity -=1
-                updateCart()          
+function decreaseProduct() { 
+    if(productArray) {   
+        productArray.forEach (addedProduct => {
+            if (addedProduct.quantity > 0) {
+                const productDec=document.getElementById('dec_'+addedProduct.id)        
+                productDec.onclick = function() {
+                    addedProduct.quantity -=1
+                    updateCart()          
+                }
             }
-        }
-        else {
-            let indexOfProduct = productArray.findIndex(i => i.id === addedProduct.id);
-                productArray.splice(indexOfProduct, 1)
-                console.log(productArray)
-                updateCart()       
-        }
-    })
+            else {
+                let indexOfProduct = productArray.findIndex(i => i.id === addedProduct.id);
+                    productArray.splice(indexOfProduct, 1)
+                    console.log(productArray)
+                    updateCart()       
+            }
+        })
+    }
 }
 
 function emptyCart() {
