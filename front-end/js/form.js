@@ -48,6 +48,7 @@ let missEmail = document.getElementById('missEmail');
 formValid.addEventListener('click', validation);
 
 function validation(event) {
+    event.preventDefault()
 //Validation du nom
     //Si le champ Nom est vide
     if (userName.validity.valueMissing){
@@ -155,57 +156,57 @@ function validation(event) {
         event.preventDefault();
         missEmail.textContent = 'Format incorrect';
         missEmail.style.color = 'orange';
-    }else{ 
-        let mailIsValid = true;
-        missEmail.textContent = " ";
-        return mailIsValid
+    }else{         
+        missEmail.textContent = " ";               
     }
 
 
 
 //Validation de la commande
-    if (mailIsValid ) {
-        let orderIsValid = true;
-        alert('commande validée');
-        return orderIsValid;
+    if ( userFirstName.checkValidity() && userName.checkValidity() && userAdress.checkValidity() && userPostalCode.checkValidity() && userTown.checkValidity() && userPhoneNumber.checkValidity() && userEmail.checkValidity() ) {
+        let productArray=JSON.parse(localStorage.getItem('productCart'))
+
+
+        const products =[]
+
+        if (productArray !== null )  {
+            productArray.forEach(product => {
+                products.push(product.id)            
+            });
+        }  
+
+        const order = {     
+            contact: {
+            firstName: userFirstName.value,
+            lastName: userName.value,
+            address: userAdress.value + ' ' + userPostalCode.value,
+            city: userTown.value,
+            email: userEmail.value,
+            },
+            products: products,
+        }
+
+        const requestOptions = {
+            method: 'POST',
+            body: JSON.stringify(order),
+            headers: { 'Content-Type': 'application/json; charset=utf-8' },
+          }
+        
+          fetch(`http://localhost:3000/api/cameras/order`, requestOptions)
+            .then((response) => response.json())
+            .then((json) => {
+              window.location.href = `orderconf.html?orderId=${json.orderId}`
+            })
+            .catch(() => {
+              alert(error)
+            })      
+    } 
+    else {
+        alert('La commande n\'a pu être validée, vérifiez votre saisie')
     }
 }
 
 
 
-function sendOrder() {
-    //Récupération de la validation de la commande
-
-    let productArray=JSON.parse(localStorage.getItem('productCart'))
-    
-      const order = {
-        contact: {
-          firstName: userFirstName,
-          lastName: userName,
-          address: userAdress + ' ' + userPostalCode,
-          city: userTown,
-          email: userEmail,
-        },
-        products: productArray,
-      }
-    
-      const requestOptions = {
-        method: 'POST',
-        body: JSON.stringify(order),
-        headers: { 'Content-Type': 'application/json; charset=utf-8' },
-      }
-    
-      fetch(`${apiUrl}/api/cameras/order`, requestOptions)
-        .then((response) => response.json())
-        .then((json) => {
-          console.log(json)
-          localStorage.removeItem('productCart')
-          window.location.href = `${window.location.origin}/orderconf.html?orderId=${json.orderId}`
-        })
-        .catch(() => {
-          alert(error)
-        })
-
-}
 
 

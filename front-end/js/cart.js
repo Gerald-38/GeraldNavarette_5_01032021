@@ -8,7 +8,8 @@ function main () {
 }
 
 let productArray=JSON.parse(localStorage.getItem('productCart'))
-console.log(productArray)
+console.log(localStorage)
+//console.log(productArray)
 
 function displayCart() {
     let subTotalPrice = 0
@@ -28,6 +29,9 @@ function displayCart() {
         subTotalDisplay.textContent = (subTotalPrice/1000).toFixed(2) + " €"
         let totalDisplay = document.getElementById('total__price')
         totalDisplay.textContent = (subTotalPrice/1000 + shippingPrice).toFixed(2) +  " €"
+        let totalPrice = (subTotalPrice/1000 + shippingPrice).toFixed(2)       
+        localStorage.setItem('totalprice', JSON.stringify(totalPrice))
+        console.log('prix total ' + totalPrice)
     }
     else {
         const prodList = document.getElementById('product__cart')
@@ -36,7 +40,7 @@ function displayCart() {
 }
 
 const updateCart = () => {
-    localStorage.setItem('productCart', JSON.stringify(productArray))
+    localStorage.setItem('productCart', JSON.stringify(productArray))    
     location.reload() 
 }
 
@@ -90,6 +94,8 @@ function emptyCart() {
     const emptyButton = document.getElementById('empty__cart');
     emptyButton.onclick = function(){
         productArray.splice(0, productArray.length);
+        totalPrice = 0
+        localStorage.setItem('totalprice', JSON.stringify(totalPrice))
         updateCart()
         console.log(productArray)         
     }
