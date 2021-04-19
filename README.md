@@ -1,7 +1,7 @@
 # GeraldNavarette_5_01032021
 Projet Orinoco Openclassrooms
 
-Création d'un site e-commerce
+Création d'un site e-commerce (front-end)
 
 Compétences évaluées : 
 
