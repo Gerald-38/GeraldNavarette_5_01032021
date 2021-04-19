@@ -5,6 +5,8 @@
     displayLenses(product)   
 })()
 
+//********* RECUPERATION DU PRODUIT *****
+
 function getProduct() {
     const urlPart = location.search;
     const urlPartArray = urlPart.split('=');
@@ -20,6 +22,9 @@ function getProduct() {
          alert(error)
      })
  }
+ 
+
+ // ********** AFFICHAGE DU PRODUIT *****
 
  function displayProduct(product) {
     document.getElementById("product__name").textContent = product.name
@@ -28,75 +33,97 @@ function getProduct() {
     document.getElementById("product__image").innerHTML = "<img src= " + product.imageUrl + ">" 
   
 
+//********** CREATION DU PANIER **********
+
     const productQty = document.getElementById('product__quantity')
     
 
     let productObject = {
-         id: product._id,
-         name: product.name,
-         price: product.price,
-        // quantity: parseInt(productQty.value) 
+        id: product._id,
+        name: product.name,
+        price: product.price,
+        quantity: 1 
     }
 
-    //console.log(productObject.quantity)
-
-    let productArray=JSON.parse(localStorage.getItem('productCart'))
-    console.log(localStorage)     
-
-    let idArray=[]
-
-    if (productArray !== null )  {
-        productArray.forEach(product => {
-            idArray.push(product.id)            
-        });
-        }
-    
-     const addToCart = () => {
-        // const productQty = document.getElementById('product__quantity').value
-        // console.log(productQty)
-
-
+    let productArray=JSON.parse(localStorage.getItem('productCart'));
+    let idArray = localStorage.getItem('idArrays') ? JSON.parse(localStorage.getItem('idArrays')) : localStorage.getItem('idArrays'); // a expliquer
+    if(idArray) {
         
-        productArray.push(productObject)
-        localStorage.setItem('productCart', JSON.stringify(productArray))
-        window.location='cart.html'
+        if (productArray !== null )  { 
+            productArray.forEach(product => {
+                idArray.push(product.id)            
+            });
+        }
+        localStorage.setItem("idArrays", JSON.stringify(idArray));
+    } else {
+        let idArray=[];
+        if (productArray !== null )  {
+            productArray.forEach(product => {
+                idArray.push(product.id)            
+            });
+        }
+        localStorage.setItem("idArrays", JSON.stringify(idArray));
     }
 
-    const addButton = document.getElementById('basket__add__btn')    
-    addButton.onclick = function(e){    
-        e.preventDefault()    
-        if (productArray !== null) {
-            if (idArray.some(x => x === productObject.id)) {                                
-               //('Vous avez déjà sélectionné ce modèle, rendez vous sur votre panier pour en augmenter le nombre à commander')                   
-               const productQty = document.getElementById('product__quantity')
-               
-               productObject.quantity = productObject.quantity ? parseInt(productQty.value) + productObject.quantity : parseInt(productQty.value)
+    const addButton = document.getElementById('basket__add__btn')  
 
-               let indexOfProduct = productArray.findIndex(i => i.id === productObject.id);
-               productArray.splice(indexOfProduct, 1, productObject)                
-               localStorage.setItem('productCart', JSON.stringify(productArray))
-               console.log(productObject.quantity)                       
-               // console.log(productArray)
-               // console.log(localStorage)               
-               window.location=('cart.html')                      
+    function addToCart() {
+        const productQty = document.getElementById('product__quantity').value             
+        productObject.quantity =  parseInt(productQty);
+        productArray.push(productObject);
+        localStorage.setItem('productCart', JSON.stringify(productArray));
+        window.location='cart.html';   
+    }
+
+
+//********** AJOUT DU PRODUIT AU PANIER **********
+    
+    addButton.onclick = function(e){    
+        e.preventDefault()
+        let idArray = JSON.parse(localStorage.getItem('idArrays'));    
+
+        if (productArray !== null ) {
+            //********** SI LE PRODUIT A DEJA ETE SELECTIONNE AU MOINS UNE FOIS
+            let productQty = document.getElementById('product__quantity').value;
+            if (parseInt(productQty) > 0) {
+                if (idArray.some(x => x === productObject.id)) {                  
+                    let qty;
+                    for (const iterator of productArray) { // ?
+                        if(iterator.id === productObject.id) {
+                            qty = iterator.quantity;
+                        }
+                    }
+                    console.log(qty);
+                    let productQty = document.getElementById('product__quantity').value;
+                    console.log(parseInt(productQty));
+                    
+                    productObject.quantity =  parseInt(productQty) + parseInt(qty);                           
+     
+                    let indexOfProduct = productArray.findIndex(i => i.id === productObject.id);
+                    productArray.splice(indexOfProduct, 1, productObject)                
+                    localStorage.setItem('productCart', JSON.stringify(productArray))
+                    console.log(productObject.quantity)             
+                    window.location=('cart.html')                      
+                 }
+                 else {                
+                     addToCart()             
+                 } 
             }
-            else { 
-                const productQty = document.getElementById('product__quantity')               
-               productObject.quantity = productObject.quantity ? parseInt(productQty.value) + productObject.quantity : parseInt(productQty.value)
-                console.log(productObject.quantity)
-                addToCart()                
-            } 
+            //********** SI LE PRODUIT N'A PAS ENCORE ETE SELECTIONNE ********** 
+            else {
+                console.log(productQty);
+                alert('veuillez saisir une quantité au moins égale à 1')                
+            }
         }
-        else {
+        //********** SI LE PANIER EST VIDE **********
+        else {            
             productArray = []
-            const productQty = document.getElementById('product__quantity')               
-            productObject.quantity = productObject.quantity ? parseInt(productQty.value) + productObject.quantity : parseInt(productQty.value)
-            console.log(productObject.quantity)
-            addToCart()            
+            addToCart()
         }        
     }
 }
 
+//********** AFFICHAGE DES OPTIONS **********
 function displayLenses(product) {
     const lensesList = (product.lenses)
     let lensesElt = document.getElementById('product__lenses')       
@@ -107,6 +134,8 @@ function displayLenses(product) {
         lensesElt.appendChild(option)  
     }    
 }
+
+
 
 
 

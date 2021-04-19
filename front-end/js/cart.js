@@ -7,18 +7,19 @@ function main () {
     goBack()
 }
 
+//********** RECUPERATION DU PANIER DEPUIS LE LOCAL STORAGE **********
+
 let productArray=JSON.parse(localStorage.getItem('productCart'))
-console.log(localStorage)
-//console.log(productArray)
+let idArray=JSON.parse(localStorage.getItem('idArrays'))
+
+//********** AFFICHAGE DU PANIER **********
 
 function displayCart() {
     let subTotalPrice = 0
     let shippingPrice = 6.9
-    //let totalPrice = subTotalPrice + shippingPrice
     
     if((productArray) && productArray.length > 0) {
         productArray.forEach(addedProduct => {
-            console.log(addedProduct.name)
             const prodList = document.getElementById('added__products')
             subTotalPrice += parseInt(addedProduct.price*addedProduct.quantity)
             productChosen = document.createElement("tr")
@@ -31,7 +32,6 @@ function displayCart() {
         totalDisplay.textContent = (subTotalPrice/1000 + shippingPrice).toFixed(2) +  " €"
         let totalPrice = (subTotalPrice/1000 + shippingPrice).toFixed(2)       
         localStorage.setItem('totalprice', JSON.stringify(totalPrice))
-        console.log('prix total ' + totalPrice)
     }
     else {
         const prodList = document.getElementById('product__cart')
@@ -40,23 +40,27 @@ function displayCart() {
 }
 
 const updateCart = () => {
-    localStorage.setItem('productCart', JSON.stringify(productArray))    
+    localStorage.setItem('productCart', JSON.stringify(productArray))
+    localStorage.setItem('idArrays', JSON.stringify(idArray))     
     location.reload() 
 }
+
+//********** SUPPRESSION D'UN PRODUIT **********
 
 function removeProduct() {
     if(productArray) {
         productArray.forEach (addedProduct => {
             const productTrash=document.getElementById(addedProduct.id)
                 productTrash.onclick = function() {
-                    let indexOfProduct = productArray.findIndex(i => i.id === addedProduct.id);
+                    let indexOfProduct = productArray.findIndex(i => i.id === addedProduct.id)
                     productArray.splice(indexOfProduct, 1)
-                    console.log(productArray)
                     updateCart()                              
                 }
         })
     }
 }
+
+//********** AUGMENTATION DU NOMBRE DE PRODUITS **********
 
 function increaseProduct() {
     if(productArray) {
@@ -70,6 +74,9 @@ function increaseProduct() {
     }
 }
 
+
+//********** DIMINUTION DU NOMBRE DE PRODUITS **********
+
 function decreaseProduct() { 
     if(productArray) {   
         productArray.forEach (addedProduct => {
@@ -81,19 +88,21 @@ function decreaseProduct() {
                 }
             }
             else {
-                let indexOfProduct = productArray.findIndex(i => i.id === addedProduct.id);
+                let indexOfProduct = productArray.findIndex(i => i.id === addedProduct.id)
                     productArray.splice(indexOfProduct, 1)
-                    console.log(productArray)
                     updateCart()       
             }
         })
     }
 }
 
+//********** VIDER LE PANIER **********
+
 function emptyCart() {
-    const emptyButton = document.getElementById('empty__cart');
+    const emptyButton = document.getElementById('empty__cart')
     emptyButton.onclick = function(){
-        productArray.splice(0, productArray.length);
+        productArray.splice(0, productArray.length)
+        idArray.splice(0, idArray.length)
         totalPrice = 0
         localStorage.setItem('totalprice', JSON.stringify(totalPrice))
         updateCart()
@@ -101,8 +110,10 @@ function emptyCart() {
     }
 }
 
+//********** RETOUR A LA LISTE DES PRODUITS **********
+
 function goBack() {
-    const backButton = document.getElementById('back__button');
+    const backButton = document.getElementById('back__button')
     backButton.onclick = function() {
         window.location='index.html'
     }

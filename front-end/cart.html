@@ -96,16 +96,15 @@
         </div>
 
         <p>VEUILLEZ REMPLIR LE FORMULAIRE POUR VALIDER VOTRE COMMANDE</P>
-        <!-- <form method="post"> -->
-          <form>
+        <form method="post">
           <div class="mb-3">
             <label for="inputName" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="inputName" maxlength='30' required>
+            <input type="text" class="form-control" id="inputName" maxlength='30' required pattern="^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$">
             <span id='missName'></span>            
           </div>
           <div class="mb-3">
             <label for="inputFirstName" class="form-label">Prénom</label>
-            <input type="text" class="form-control" id="inputFirstName" maxlength='30' required>
+            <input type="text" class="form-control" id="inputFirstName" maxlength='30' required pattern="^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$" >
             <span id='missFirstName'></span>                        
           </div>
           <div class="mb-3">
@@ -115,12 +114,12 @@
           </div>
           <div class="mb-3">
             <label for="inputPostalCode" class="form-label">Code Postal</label>
-            <input type="text" class="form-control" id="inputPostalCode" maxlength='5' required>
+            <input type="text" class="form-control" id="inputPostalCode" maxlength='5' required pattern="\d{5}">
             <span id='missPostalCode'></span>            
           </div>
           <div class="mb-3">
             <label for="inputTown" class="form-label">Ville</label>
-            <input type="text" class="form-control" id="inputTown" maxlength='30' required>
+            <input type="text" class="form-control" id="inputTown" maxlength='30' required pattern="^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$">
             <span id='missTown'></span>            
           </div>
           <div class="mb-3">
@@ -130,7 +129,7 @@
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" maxlength='100' required>
+            <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" maxlength='100' required pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
             <span id='missEmail'></span>            
           </div>
           <button type="submit" class="btn btn-primary" id="order__submit__btn">Valider votre commande</button>

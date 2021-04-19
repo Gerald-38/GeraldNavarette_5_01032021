@@ -1,7 +1,7 @@
 (async function() {
     const products = await getProducts()
     for (product of products) {
-        displayProduct(product)
+        displayProducts(product)
     }
 })()
 
@@ -18,7 +18,7 @@ function getProducts() {
     })
 }
 
-function displayProduct(product) {
+function displayProducts(product) {
     const templateElt = document.getElementById("templateProduct")
     const cloneElt = document.importNode(templateElt.content, true)
 
