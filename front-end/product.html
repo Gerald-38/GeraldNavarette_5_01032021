@@ -1,48 +1,71 @@
   
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="public/css/style.css">
-    <script src="./js/product.js" defer></script>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">VINTAGE CAMS STORE</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <a class="nav-link" aria-current="page" href="index.html">Home</a>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="public/css/style.css">
+  <script src="./js/product.js" defer></script>
+  </head>
+  <body>
+    <div class="bg-dark">
+      <div class="container">
+        <div class="row">
+          <nav class="col navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="index.html">ORICAM STORE</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarContent" class="collapse navbar-collapse">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Accueil</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="cart.html">Panier</a>
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
-        </nav>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="jumbotron">
         <main class="main" id="main">
-            <h1 class="title">Fiche produit</h1>
-                <article class="product">
-                    <h2 id="product__name" class="product__name">TITRE</h2>  
-                    <p id="product__price" class="product__price">CONTENU</p>
-                    <p id="product__description" class="product__description">CONTENU</p>                                        
-                    <p id="product__image" class="product__image"></p>                    
-                    <input type="number" id="product__quantity"  name="quantity" min="1" value="1">
-                    <p>
-                        <select name="lenses" id="product__lenses">
-                            <option value="">--Choisissez un type d'objectif--</option>                            
-                        </select>
-                    </p>
-                    <br>
-                    <button class="btn btn-primary" id="basket__add__btn">Ajouter au panier</button>
-                    <p class="product__back"><a href="index.html">Retour catalogue</a></p>              
-                </article>
-        </main>        
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    
-    </body>
+          <article class="product">
+              <h2 id="product__name" class="product__name">TITRE</h2>
+              <div class="row">
+                <div class="col-12 col-md-3">
+                  <p id="product__price" class="product__price">CONTENU</p>
+                  <p id="product__description" class="product__description">CONTENU</p> 
+                </div>
+                <div class="col-12 col-md-9 div__product">
+                  <p id="product__image" class="product__image-detail"></p> 
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-md-3">
+                <label for="product__quantity" class="form-label">Quantité : </label>                                  
+              <input type="number" id="product__quantity"  name="quantity" min="1" value="1">
+              </div>
+              <div class="col-12 col-md-3">
+                <label for="product__lenses" class="form-label">Options : </label>
+                <select name="lenses" id="product__lenses">
+                    <option value="">--Choisissez un type d'objectif--</option>                            
+                </select>
+              </div>
+            </div>              
+            <br>
+            <button class="btn btn-primary" id="basket__add__btn">Ajouter au panier</button>              
+            <button class="btn btn-secondary" id="back__home__btn">Retour catalogue</button>              
+          </article>        
+        </main>
+      </div>
+    </div>       
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
 </html>

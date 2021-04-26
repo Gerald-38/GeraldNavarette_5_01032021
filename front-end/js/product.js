@@ -2,7 +2,8 @@
 (async function() {
     const product = await getProduct()
     displayProduct(product) 
-    displayLenses(product)   
+    displayLenses(product) 
+    backHome()  
 })()
 
 //********* RECUPERATION DU PRODUIT *****
@@ -30,7 +31,7 @@ function getProduct() {
     document.getElementById("product__name").textContent = product.name
     document.getElementById("product__price").textContent = (product.price/1000).toFixed(2) + " €"
     document.getElementById("product__description").textContent = product.description
-    document.getElementById("product__image").innerHTML = "<img src= " + product.imageUrl + ">" 
+    document.getElementById("product__image").innerHTML = "<img src= " + product.imageUrl + " class='float-right' " + ">" 
   
 
 //********** CREATION DU PANIER **********
@@ -133,6 +134,14 @@ function displayLenses(product) {
         option.value = lens
         lensesElt.appendChild(option)  
     }    
+}
+
+//********** RETOUR CATALOGUE **********
+function backHome() {
+    const backButton = document.getElementById('back__home__btn')
+    backButton.onclick = function(e) {
+        window.location='index.html'
+    }
 }
 
 
