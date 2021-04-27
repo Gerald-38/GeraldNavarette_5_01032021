@@ -94,25 +94,21 @@ function getProduct() {
                             qty = iterator.quantity;
                         }
                     }
-                    console.log(qty);
                     let productQty = document.getElementById('product__quantity').value;
-                    console.log(parseInt(productQty));
-                    
+
                     productObject.quantity =  parseInt(productQty) + parseInt(qty);                           
      
                     let indexOfProduct = productArray.findIndex(i => i.id === productObject.id);
                     productArray.splice(indexOfProduct, 1, productObject)                
-                    localStorage.setItem('productCart', JSON.stringify(productArray))
-                    console.log(productObject.quantity)             
+                    localStorage.setItem('productCart', JSON.stringify(productArray))          
                     window.location=('cart.html')                      
                  }
                  else {                
                      addToCart()             
                  } 
             }
-            //********** SI LE PRODUIT N'A PAS ENCORE ETE SELECTIONNE ********** 
+            //********** SI L'UTILISATEUR SELECTIONNE MOINS DE UN PRODUIT ********** 
             else {
-                console.log(productQty);
                 alert('veuillez saisir une quantité au moins égale à 1')                
             }
         }

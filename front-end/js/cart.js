@@ -7,6 +7,7 @@ function main () {
     goBack()
 }
 
+
 //********** RECUPERATION DU PANIER DEPUIS LE LOCAL STORAGE **********
 
 let productArray=JSON.parse(localStorage.getItem('productCart'))

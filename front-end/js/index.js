@@ -25,7 +25,6 @@ function getProducts() {
 function displayProducts(product) {
     const templateElt = document.getElementById("templateProduct")
     const cloneElt = document.importNode(templateElt.content, true)
-
     cloneElt.getElementById("product__image").innerHTML = "<img src= " + product.imageUrl + ">" 
     cloneElt.getElementById("product__name").textContent = product.name
     cloneElt.getElementById("product__price").textContent = (product.price/1000).toFixed(2) + " €"
@@ -35,5 +34,3 @@ function displayProducts(product) {
     }  
     document.getElementById('main').appendChild(cloneElt)       
 }
-
-
