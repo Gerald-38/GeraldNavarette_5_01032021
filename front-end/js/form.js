@@ -185,7 +185,7 @@ function postOrder() {
             .then((json) => {
               window.location.href = `orderconf.html?orderId=${json.orderId}`
             })
-            .catch(() => {
+            .catch((error) => {
               alert(error)
             })      
     } 
