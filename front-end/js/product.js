@@ -9,9 +9,7 @@
 //********* RECUPERATION DU PRODUIT *****
 
 function getProduct() {
-    const urlPart = location.search;
-    const urlPartArray = urlPart.split('=');
-    const productParam = urlPartArray[1];
+    const productParam = new URL(window.location.href).searchParams.get('id')
     return fetch("http://localhost:3000/api/cameras/" + productParam)
      .then(function(httpBodyResponse){
          return httpBodyResponse.json()
@@ -66,7 +64,7 @@ function getProduct() {
         localStorage.setItem("idArrays", JSON.stringify(idArray));
     }
 
-    const addButton = document.getElementById('basket__add__btn')  
+    // const addButton = document.getElementById('basket__add__btn')  
 
     function addToCart() {
         const productQty = document.getElementById('product__quantity').value             
@@ -78,13 +76,13 @@ function getProduct() {
 
 
 //********** AJOUT DU PRODUIT AU PANIER **********
-    
+    const addButton = document.getElementById('basket__add__btn')  
     addButton.onclick = function(e){    
         e.preventDefault()
         let idArray = JSON.parse(localStorage.getItem('idArrays'));    
 
         if (productArray !== null ) {
-            //********** SI LE PRODUIT A DEJA ETE SELECTIONNE AU MOINS UNE FOIS
+            //********** SI LE PRODUIT A DEJA ETE AJOUTE AU PANIER AU MOINS UNE FOIS
             let productQty = document.getElementById('product__quantity').value;
             if (parseInt(productQty) > 0) {
                 if (idArray.some(x => x === productObject.id)) {                  

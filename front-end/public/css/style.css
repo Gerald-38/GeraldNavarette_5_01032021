@@ -55,7 +55,6 @@
   }
 
   .product__image-detail img {
-    float: center;
     width: 90%;
     animation: appear 2000ms ease-in-out;
   }

@@ -153,15 +153,15 @@ function validateFields(event) {
 function postOrder() {
     if ( userName.checkValidity() && userFirstName.checkValidity() &&  userAdress.checkValidity() && userPostalCode.checkValidity() && userTown.checkValidity() && userPhoneNumber.checkValidity() && userEmail.checkValidity() ) {
         
-        let productArray=JSON.parse(localStorage.getItem('productCart'))
+        // let productArray=JSON.parse(localStorage.getItem('productCart'))
 
-        const products =[]
+        const products = JSON.parse(localStorage.getItem('idArrays'))
 
-        if (productArray !== null )  {
-            productArray.forEach(product => {
-                products.push(product.id)            
-            });
-        }  
+        // if (productArray !== null )  {
+        //     productArray.forEach(product => {
+        //         products.push(product.id)            
+        //     });
+        // }  
 
         const order = {     
             contact: {
