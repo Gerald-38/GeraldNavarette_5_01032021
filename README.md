@@ -22,6 +22,6 @@ Dans le dossier cloné, à la racine, cloner le back-end du projet et suivre les
 
 https://github.com/OpenClassrooms-Student-Center/JWDP5
 
-Ouvrir le fichier index.html du dossier front-end
+Dans un navigateur internet, ouvrir le fichier index.html du dossier front-end
 
 
