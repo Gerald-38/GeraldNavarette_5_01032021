@@ -1,6 +1,7 @@
 
 (async function() {
-    const product = await getProduct()
+    const productParam = new URL(window.location.href).searchParams.get('id')
+    const product = await getProducts(URL_ENDPOINT + productParam)
     displayProduct(product) 
     displayLenses(product) 
     backHome()  
@@ -8,19 +9,18 @@
 
 //********* RECUPERATION DU PRODUIT *****
 
-function getProduct() {
-    const productParam = new URL(window.location.href).searchParams.get('id')
-    return fetch("http://localhost:3000/api/cameras/" + productParam)
-     .then(function(httpBodyResponse){
-         return httpBodyResponse.json()
-     })
-     .then(function(product) {
-        return product        
-     })
-     .catch(function(error) {
-         alert(error)
-     })
- }
+// function getProduct() {    
+//     return fetch("http://localhost:3000/api/cameras/" + productParam)
+//      .then(function(httpBodyResponse){
+//          return httpBodyResponse.json()
+//      })
+//      .then(function(product) {
+//         return product        
+//      })
+//      .catch(function(error) {
+//          alert(error)
+//      })
+//  }
  
 
  // ********** AFFICHAGE DU PRODUIT *****
@@ -46,20 +46,19 @@ function getProduct() {
 
     let productArray=JSON.parse(localStorage.getItem('productCart'));
     let idArray = localStorage.getItem('idArrays') ? JSON.parse(localStorage.getItem('idArrays')) : localStorage.getItem('idArrays'); // a expliquer
-    if(idArray) {
-        
+    if(idArray) {        
         if (productArray !== null )  { 
             productArray.forEach(product => {
                 idArray.push(product.id)            
             });
         }
         localStorage.setItem("idArrays", JSON.stringify(idArray));
-    } else {
-        let idArray=[];
-        if (productArray !== null )  {
-            productArray.forEach(product => {
-                idArray.push(product.id)            
-            });
+        } else {
+            let idArray=[];
+            if (productArray !== null )  {
+                productArray.forEach(product => {
+                    idArray.push(product.id)            
+                });
         }
         localStorage.setItem("idArrays", JSON.stringify(idArray));
     }
