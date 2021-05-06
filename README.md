@@ -18,7 +18,7 @@ Gérer des événements JavaScript
 
 Cloner ce projet 
 
-Dans le dossier cloné, cloner le back-end du projet et suivre les instructions notées sur ce dépot : 
+Dans le dossier cloné, à la racine, cloner le back-end du projet et suivre les instructions notées sur ce dépot : 
 
 https://github.com/OpenClassrooms-Student-Center/JWDP5
 
