@@ -7,22 +7,6 @@
     backHome()  
 })()
 
-//********* RECUPERATION DU PRODUIT *****
-
-// function getProduct() {    
-//     return fetch("http://localhost:3000/api/cameras/" + productParam)
-//      .then(function(httpBodyResponse){
-//          return httpBodyResponse.json()
-//      })
-//      .then(function(product) {
-//         return product        
-//      })
-//      .catch(function(error) {
-//          alert(error)
-//      })
-//  }
- 
-
  // ********** AFFICHAGE DU PRODUIT *****
 
  function displayProduct(product) {
@@ -34,8 +18,7 @@
 
 //********** CREATION DU PANIER **********
 
-    const productQty = document.getElementById('product__quantity')
-    
+    const productQty = document.getElementById('product__quantity')    
 
     let productObject = {
         id: product._id,

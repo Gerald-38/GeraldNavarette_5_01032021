@@ -5,21 +5,6 @@
     }
 })()
 
-//********* RECUPERATION DE LA LISTE DES PRODUITS **********
-
-// function getProducts() {
-//    return fetch("http://localhost:3000/api/cameras")
-//     .then(function(httpBodyResponse){
-//         return httpBodyResponse.json()
-//     })
-//     .then(function(products) {
-//        return products
-//     })
-//     .catch(function(error) {
-//         alert(error)
-//         //afficher l'erreur en haut avec un getelement byid ou créer un page 404 et rediriger l'utilisateur
-//     })
-// }
 
 //********* AFFICHAGE DE LA LISTE DES PRODUITS **********
 
