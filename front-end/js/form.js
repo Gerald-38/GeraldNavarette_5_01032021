@@ -56,7 +56,7 @@ function validateFields(event) {
     //Si le format de données est incorrect
     }else if (nameFnameTownValid.test(userName.value) == false){
         event.preventDefault();
-        missName.textContent = 'Format incorrect';
+        missName.textContent = 'Format incorrect : aucun chiffre n\'est autorisé';
         missName.style.color = 'orange';
     }else{ 
         missName.textContent = " ";
@@ -70,7 +70,7 @@ function validateFields(event) {
     //Si le format de données est incorrect
     }else if (nameFnameTownValid.test(userFirstName.value) == false){
         event.preventDefault();
-        missFirstName.textContent = 'Format incorrect';
+        missFirstName.textContent = 'Format incorrect : aucun chiffre n\'est autorisé';
         missFirstName.style.color = 'orange';
     }else{ 
         missFirstName.textContent = " ";
@@ -94,7 +94,7 @@ function validateFields(event) {
     //Si le format de données est incorrect
     }else if (postalCodeValid.test(userPostalCode.value) == false){
         event.preventDefault();
-        missPostalCode.textContent = 'Format incorrect';
+        missPostalCode.textContent = 'Format incorrect : veuillez saisir un code à 5 chiffres svp';
         missPostalCode.style.color = 'orange';
     }else{ 
         missPostalCode.textContent = " ";
@@ -109,7 +109,7 @@ function validateFields(event) {
     //Si le format de données est incorrect 
     }else if (nameFnameTownValid.test(userTown.value) == false){
         event.preventDefault();
-        missTown.textContent = 'Format incorrect';
+        missTown.textContent = 'Format incorrect : aucun chiffre n\'est autorisé';
         missTown.style.color = 'orange';
     }else{ 
         missTown.textContent = " ";
@@ -124,7 +124,7 @@ function validateFields(event) {
     //Si le format de données est incorrect
     }else if (phoneNumberValid.test(userPhoneNumber.value) == false){
         event.preventDefault();
-        missPhoneNumber.textContent = 'Format incorrect';
+        missPhoneNumber.textContent = 'Format incorrect : veuillez saisir un numéro à 10 chiffres svp';
         missPhoneNumber.style.color = 'orange';
     }else{ 
         missPhoneNumber.textContent = " ";
@@ -140,7 +140,7 @@ function validateFields(event) {
     //Si le format de données est incorrect 
     }else if (emailValid.test(userEmail.value) == false){
         event.preventDefault();
-        missEmail.textContent = 'Format incorrect';
+        missEmail.textContent = 'Format incorrect : veuillez saisir une adresse mail valide svp (exemple : abcd@mail.com)';
         missEmail.style.color = 'orange';
     }else{         
         missEmail.textContent = " " ;              
@@ -153,15 +153,7 @@ function validateFields(event) {
 function postOrder() {
     if ( userName.checkValidity() && userFirstName.checkValidity() &&  userAdress.checkValidity() && userPostalCode.checkValidity() && userTown.checkValidity() && userPhoneNumber.checkValidity() && userEmail.checkValidity() ) {
         
-        // let productArray=JSON.parse(localStorage.getItem('productCart'))
-
         const products = JSON.parse(localStorage.getItem('idArrays'));
-
-        // if (productArray !== null )  {
-        //     productArray.forEach(product => {
-        //         products.push(product.id)            
-        //     });
-        // }  
 
         const order = {     
             contact: {

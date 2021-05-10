@@ -16,7 +16,7 @@
     document.getElementById("product__image").innerHTML = "<img src= " + product.imageUrl + " class='float-right' " + ">"; 
   
 
-//********** CREATION DU PANIER **********
+//********** RECUPERATION DU PANIER **********
 
     const productQty = document.getElementById('product__quantity');   
 
